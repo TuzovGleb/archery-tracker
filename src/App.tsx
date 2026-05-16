@@ -1,4 +1,4 @@
-import { Route, Switch } from 'wouter'
+import { Route, Router, Switch } from 'wouter'
 import { HomeScreen } from '@/features/home/HomeScreen'
 import { NewTrainingScreen } from '@/features/training/NewTrainingScreen'
 import { TrainingScreen } from '@/features/training/TrainingScreen'
@@ -8,8 +8,11 @@ import { StatsScreen } from '@/features/stats/StatsScreen'
 import { SettingsScreen } from '@/features/settings/SettingsScreen'
 import { EquipmentScreen } from '@/features/equipment/EquipmentScreen'
 
+const ROUTER_BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 export function App() {
   return (
+    <Router base={ROUTER_BASE}>
     <Switch>
       <Route path="/" component={HomeScreen} />
       <Route path="/training/new" component={NewTrainingScreen} />
@@ -33,5 +36,6 @@ export function App() {
         <div className="p-6 text-center text-muted">Страница не найдена</div>
       </Route>
     </Switch>
+    </Router>
   )
 }
